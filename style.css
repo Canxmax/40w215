@@ -1,0 +1,12 @@
+body {
+    font-family:'Courier New', Courier, monospace ; /* Yazı tipi ailesi */
+    font-size: 11px; /* <p></p> etiketindeki ana yazının boyutu */
+    background-color: #bce1ff; /* Web sayfasının arka plan rengi */
+    color: #020101; /* Metin rengi */
+}
+
+h1 {
+    color: #00a800; /* Başlık rengi */
+    font-size: 24px; /* Başlık yazı tipi boyutu */
+    font-family: Comic sans-serif; /* Başlıkta kullanılan yazı tipi ailesi */
+}
