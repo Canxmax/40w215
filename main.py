@@ -1,22 +1,21 @@
-import discord
-from discord.ext import commands
-import os, random
+from flask import Flask
+import random
+app = Flask(__name__)
 
-intents = discord.Intents.default()
-intents.message_content = True
+facts_list= ["Teknolojik bağımlılıktan mustarip olan çoğu kişi, kendilerini şebeke kapsama alanı dışında bulduklarında veya cihazlarını kullanamadıkları zaman yoğun stres yaşarlar."," 2018 yılında yapılan bir araştırmaya göre 18-34 yaş arası kişilerin %50'den fazlası kendilerini akıllı telefonlarına bağımlı olarak görüyor.","Teknolojik bağımlılık çalışması, modern bilimsel araştırmanın en ilgili alanlarından biridir.", "bunu görme şansın %0,00001!"]
 
-bot = commands.Bot(command_prefix='$', intents=intents)
+aa = ["bir roblox gift kodu! :AD64 AWW7 U448 Q983", "Diğer zaman iyi şanslar dilerim"]
+@app.route("/")
+def home():
+    return f'<h1>MERHABA! Bu sayfada, teknolojik bağımlılıklar hakkında birkaç ilginç gerçeği öğrenebilirsiniz!<a href="/random_fact">Rastgele bir gerçeği görüntüle!</a>'
 
-@bot.event
-async def on_ready():
-    print(f'We have logged in as {bot.user}')
+@app.route("/random_fact")
+def hello_world():
+    return f'<p>{random.choice(facts_list)}</p>'
 
-@bot.command()
-async def mem(ctx):
-    img_name = random.choice(os.listdir('images'))
-    with open(f'images/{img_name}', 'rb') as f:
-        picture = discord.File(f)
- 
-    await ctx.send(file=picture)
+@app.route("/secret")
+def hello_world2():
+    return f'<p>{random.choice(aa)}</p>'
 
-bot.run('')
+
+app.run(debug=True)
